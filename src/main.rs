@@ -1,9 +1,9 @@
-use day01::{squares, filter_odd};
+use day01::{filter_odd, squares};
 
 fn main() {
     println!("Rust Functional Programming Tutorial - Tag 01");
 
-    let numbers = vec![1,2,3,4,5];
+    let numbers = vec![1, 2, 3, 4, 5];
     let squares_result = squares(numbers.clone());
     println!("Squares: {:?}", squares_result);
 

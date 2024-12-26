@@ -1,0 +1,12 @@
+[package]
+name = "rust_funtional_programming"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = [
+	"day01"
+]
+
+[dependencies]
+day01 = { path = "day01" }

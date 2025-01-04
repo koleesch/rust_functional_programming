@@ -7,8 +7,18 @@ name = "day01"
 version = "0.1.0"
 
 [[package]]
+name = "day02"
+version = "0.1.0"
+
+[[package]]
+name = "day03"
+version = "0.1.0"
+
+[[package]]
 name = "rust_funtional_programming"
 version = "0.1.0"
 dependencies = [
  "day01",
+ "day02",
+ "day03",
 ]

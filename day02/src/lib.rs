@@ -74,5 +74,4 @@ mod tests {
         let output = transform_and_filter(&input, divisor);
         assert_eq!(output, None);
     }
-
 }

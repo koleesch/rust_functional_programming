@@ -3,17 +3,21 @@
 /// Wendet die Closure auf jedes Element an.
 /// Filtert die Ergebnisse basierend auf der Bedingung x > 10
 /// Gibt die gefilterten Ergebnisse zurück.
-pub fn apply_and_filter<Transform, Predicate>(numbers: &[i32], operation: Transform, to_filter: Predicate) -> Option<Vec<i32>>
+pub fn apply_and_filter<Transform, Predicate>(
+    numbers: &[i32],
+    operation: Transform,
+    to_filter: Predicate,
+) -> Option<Vec<i32>>
 where
     Transform: Fn(i32) -> i32,
     Predicate: Fn(i32) -> bool,
 {
     let filtered: Vec<i32> = numbers
-	.iter()
-	.copied()  //direkt über Werte iterieren
-	.map(|x| operation(x)) // Transformation
-	.filter(|&x| to_filter(x)) // Filterung
-	.collect();
+        .iter()
+        .copied() //direkt über Werte iterieren
+        .map(|x| operation(x)) // Transformation
+        .filter(|&x| to_filter(x)) // Filterung
+        .collect();
 
     if filtered.is_empty() {
         return None;
@@ -24,25 +28,27 @@ where
 #[derive(Debug)]
 pub enum DoubleAndFilterError {
     EmptyInput,
-    
 }
 
-pub fn double_and_filter<Predicate>(numbers: &[i32], to_filter: Predicate) -> Result<Vec<i32>, DoubleAndFilterError>
+pub fn double_and_filter<Predicate>(
+    numbers: &[i32],
+    to_filter: Predicate,
+) -> Result<Vec<i32>, DoubleAndFilterError>
 where
-    Predicate: Fn(i32) -> bool
+    Predicate: Fn(i32) -> bool,
 {
     if numbers.is_empty() {
         return Err(DoubleAndFilterError::EmptyInput);
     }
-    
-    let filtered:  Vec<i32> = numbers
+
+    let filtered: Vec<i32> = numbers
         .iter()
         .copied()
-        .map(|x| &x*2)
+        .map(|x| &x * 2)
         .filter(|&x| to_filter(x))
         .collect();
 
-    Ok(filtered)	
+    Ok(filtered)
 }
 
 #[cfg(test)]

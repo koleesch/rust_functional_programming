@@ -1,6 +1,8 @@
 use day01::{filter_odd, squares, sum};
 use day02::{filter_by_divisor, transform_and_filter};
 use day03::{apply_and_filter, double_and_filter};
+use day04::RingBuffer;
+use day05::factorial_tail_recursion;
 
 fn main() {
     println!("Rust Functional Programming Tutorial - Tag 01");
@@ -34,8 +36,24 @@ fn main() {
     }
 
     if let Ok(filtered) = double_and_filter(&numbers, |x| x % 3 == 0) {
-	println!("Funktion ausgeführt und gefilterte Zahlen: {:?}", filtered);
+        println!("Funktion ausgeführt und gefilterte Zahlen: {:?}", filtered);
     } else {
-	println!("Es wurden keine Zahlen gefunden, die verdoppelt und anschließend durch 3 teilbar sind.")
+        println!("Es wurden keine Zahlen gefunden, die verdoppelt und anschließend durch 3 teilbar sind.")
     }
+
+    let mut buffer = RingBuffer::new(3);
+    buffer.push(10);
+    buffer.push(20);
+    buffer.push(30);
+    buffer.push(40);
+
+    while let Some(item) = buffer.pop() {
+        println!("Ringbuffer-Element: {}", item);
+    }
+
+    let ftr = factorial_tail_recursion(10.0, 1.0);
+    println!("Ergebnis der Fakultät von 10: {}", ftr);
+
+    let ftr = factorial_tail_recursion(1000.0, 1.0);
+    println!("Ergebnis der Fakultät von 1000: {}", ftr);
 }

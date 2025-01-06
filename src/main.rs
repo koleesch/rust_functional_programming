@@ -3,6 +3,7 @@ use day02::{filter_by_divisor, transform_and_filter};
 use day03::{apply_and_filter, double_and_filter};
 use day04::RingBuffer;
 use day05::factorial_tail_recursion;
+use day06::{ process_numbers };
 
 fn main() {
     println!("Rust Functional Programming Tutorial - Tag 01");
@@ -56,4 +57,7 @@ fn main() {
 
     let ftr = factorial_tail_recursion(1000.0, 1.0);
     println!("Ergebnis der Fakultät von 1000: {}", ftr);
+    
+    let sum = process_numbers(&numbers);
+    println!("Das Ergebnis der Zahlen, die durch 3 teilbar sind, mal 2: {}", sum);
 }

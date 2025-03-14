@@ -1,10 +1,11 @@
-use std::time::Instant;
 use day01::{filter_odd, squares, sum};
 use day02::{filter_by_divisor, transform_and_filter};
 use day03::{apply_and_filter, double_and_filter};
 use day04::RingBuffer;
 use day05::factorial_tail_recursion;
-use day06::{ process_numbers, process_with_debug };
+use day06::{process_numbers, process_with_debug};
+use day07::process_and_sum;
+use std::time::Instant;
 
 fn main() {
     println!("Rust Functional Programming Tutorial - Tag 01");
@@ -58,22 +59,40 @@ fn main() {
 
     let ftr = factorial_tail_recursion(1000.0, 1.0);
     println!("Ergebnis der Fakultät von 1000: {}", ftr);
-    
+
     let sum = process_numbers(&numbers);
-    println!("Das Ergebnis der Zahlen, die durch 3 teilbar sind, mal 2: {}", sum);
+    println!(
+        "Das Ergebnis der Zahlen, die durch 3 teilbar sind, mal 2: {}",
+        sum
+    );
 
     let sum = process_with_debug(&numbers);
-    println!("Das Ergebnis der Zahlen, die durch 3 teilbar sind, mal 2: {}", sum);
+    println!(
+        "Das Ergebnis der Zahlen, die durch 3 teilbar sind, mal 2: {}",
+        sum
+    );
 
     let large_data: Vec<i32> = (1..50_001).collect();
 
     let start = Instant::now();
     let result_iter = process_numbers(&large_data);
     let duration_iter = start.elapsed();
-    println!("Iterator Result: {}, Time: {:?}", result_iter, duration_iter);
+    println!(
+        "Iterator Result: {}, Time: {:?}",
+        result_iter, duration_iter
+    );
 
     let start = Instant::now();
     let result_direct = process_numbers(&large_data);
     let duration_direct = start.elapsed();
-    println!("Direct Result: {}, Time: {:?}", result_direct, duration_direct);
+    println!(
+        "Direct Result: {}, Time: {:?}",
+        result_direct, duration_direct
+    );
+
+    let sum = process_and_sum(&numbers);
+    println!(
+        "Summe aller positiven Zahlen, die verdoppelt wurden und durch 5 teilbar sind: {}",
+        sum
+    );
 }
